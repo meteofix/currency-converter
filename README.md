@@ -1,27 +1,34 @@
-# CurrencyConverter
+# Конвертер валют
+## Додаток розроблений за допомогою фреймворку Angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
+## Ознайомитись з додатком онлайн можна за посиланням: [Currency-converter](https://meteofix-currency-converter.netlify.app/).
 
-## Development server
+Для локального запуску клонуйте репозиторій, виконавши наступну команду:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### `git clone https://github.com/meteofix/currency-converter.git`
 
-## Code scaffolding
+Інсталюйте залежності, виконавши у папці з клонованим проектом команду:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### `npm install`
 
-## Build
+Запустіть додаток:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### `ng serve`
 
-## Running unit tests
+Для запуску лінтінгу виконайте команду:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### `ng lint`
 
-## Running end-to-end tests
+## Примітки:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+> У проекті був налаштований eslint, сконфігуровані стандартні правила Angular та Airbnb, а також Prettier.
 
-## Further help
+> Для оформлення була використана бібліотека Angular Material.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> Додаток адаптується під різні розміри екранів.
+
+> Дані про актуальний курс валют отримуються з даного [API](https://www.exchangerate-api.com/).
+
+> У разі виникнення помилки на сторінці виводиться картка з повідомленням, а також деталізована інформація про помилку у консолі розробника.
+
+> Кнопка справа у хедері дозволяє повторно отримати з сервера інформацію про курс валют.
