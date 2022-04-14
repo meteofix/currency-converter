@@ -1,1 +1,28 @@
-<p>header works!</p>
+<mat-toolbar class="header" color="primary">
+  <div class="header-toolbar">
+    <span class="title">Currency Converter</span>
+    <span class="rate">
+      <span>
+        USD: 29.33
+        <!--        {{ rates['USD']['UAH'].toFixed(2) }}-->
+        UAH
+      </span>
+      <span>
+        EUR: 31.33
+        <!--        {{ rates['EUR']['UAH'].toFixed(2) }}-->
+        UAH
+      </span>
+
+      <button
+        class="button"
+        mat-stroked-button
+        color="basic"
+        aria-label="Update exchange rate icon"
+        title="Update exchange rate"
+        (click)="updateRates.emit()"
+      >
+        <mat-icon class="icon">sync</mat-icon>
+      </button>
+    </span>
+  </div>
+</mat-toolbar>

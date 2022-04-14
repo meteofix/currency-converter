@@ -1,1 +1,118 @@
-<p>main works!</p>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <div mat-card-avatar class="avatar"></div>
+      <mat-card-title>
+        Convert {{ firstSelectedCurrency.viewValue }} to {{ secondSelectedCurrency.viewValue }}
+      </mat-card-title>
+      <mat-card-subtitle> Currency Converter </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+      <form class="form">
+        <div class="currency">
+          <mat-form-field class="counter input">
+            <mat-label>Amount</mat-label>
+            <input
+              class="value-field"
+              matInput
+              type="number"
+              min="0"
+              [(ngModel)]="firstCounter"
+              (ngModelChange)="setSecondCounter()"
+              name="first-counter"
+              title="Enter amount"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="selector input" title="Select first currency">
+            <mat-label>From</mat-label>
+            <mat-select
+              [formControl]="firstCurrencyControl"
+              (selectionChange)="setFirstSelectedCurrency(); setSecondCounter()"
+            >
+              <mat-select-trigger class="value-field">
+                <img
+                  class="flag-icon"
+                  [src]="firstSelectedCurrency.logo"
+                  alt="flag icon"
+                />
+                <span>
+                  {{ firstSelectedCurrency.value }} - {{ firstSelectedCurrency.viewValue }}
+                </span>
+              </mat-select-trigger>
+              <mat-option
+                *ngFor="let currency of currencies"
+                [value]="currency.value"
+              >
+                <img
+                  [src]="currency.logo"
+                  class="flag-icon"
+                  alt="{{ currency.value }} icon"
+                />
+                {{ currency.value }} - {{ currency.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="switch-button-container">
+          <button
+            mat-stroked-button
+            color="basic"
+            aria-label="Switch counters icon"
+            title="Switch counters"
+            (click)="switchHandler()"
+          >
+            <mat-icon>swap_horiz</mat-icon>
+          </button>
+        </div>
+
+        <div class="currency">
+          <mat-form-field class="counter input">
+            <mat-label>Amount</mat-label>
+            <input
+              class="value-field"
+              matInput
+              type="number"
+              min="0"
+              [(ngModel)]="secondCounter"
+              (ngModelChange)="setFirstCounter()"
+              name="second-counter"
+              title="Enter amount"
+            /></mat-form-field>
+
+          <mat-form-field class="selector input" title="Select currency">
+            <mat-label>To</mat-label>
+            <mat-select
+              [formControl]="secondCurrencyControl"
+              (selectionChange)="setSecondSelectedCurrency(); setSecondCounter()"
+            >
+              <mat-select-trigger class="value-field">
+                <img
+                  class="flag-icon"
+                  [src]="secondSelectedCurrency.logo"
+                  alt="flag icon"
+                />
+                <span>
+                  {{ secondSelectedCurrency.value }} - {{ secondSelectedCurrency.viewValue }}
+                </span>
+              </mat-select-trigger>
+              <mat-option
+                *ngFor="let currency of currencies"
+                [value]="currency.value"
+              >
+                <img
+                  [src]="currency.logo"
+                  class="flag-icon"
+                  alt="{{ currency.value }} icon"
+                />
+                {{ currency.value }} - {{ currency.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,103 @@
+.container {
+  width: 320px;
+  margin:  auto;
+  padding-top: 60px;
+  @media screen and (min-width: 390px){
+    width: 375px;
+  }
+  @media screen and (min-width: 768px){
+    width: 600px;
+  }
+  @media screen and (min-width: 1024px){
+    width: 960px;
+  }
+  @media screen and (min-width: 1440px){
+    width: 1240px;
+  }
+}
+
+.card {
+  padding: 30px;
+
+  @media screen and (min-width: 768px){
+    padding: 30px 60px;
+  }
+  @media screen and (min-width: 1024px){
+    padding: 30px;
+  }
+
+  .card-header {
+    .avatar {
+      background-image: url("../../assets/images/currency.png");
+      background-size: cover;
+    }
+  }
+  .card-content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .form {
+      display: flex;
+      flex: 1 1 auto;
+      justify-content: space-around;
+      flex-direction: column;
+      min-width: 150px;
+      width: 100%;
+      font-size: 1.2em;
+
+      @media screen and (min-width: 1024px){
+        flex-direction: row;
+      }
+
+      .currency {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        @media screen and (min-width: 1024px){
+          flex-direction: row;
+        }
+        .input {
+          box-sizing: border-box;
+          padding: 10px 0;
+          @media screen and (max-width: 1024px){
+            width: 100%;
+          }
+        }
+      }
+      >div {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .counter {
+        width: 100px;
+      }
+      .selector {
+        margin-top: 0;
+        width: 230px;
+        @media screen and (min-width: 1024px){
+          margin-left: 20px;
+        }
+        @media screen and (min-width: 1440px){
+          margin-left: 40px;
+        }
+      }
+      .value-field {
+        display: flex;
+        margin-top: 10px;
+        span {
+          padding-left: 3px;
+        }
+      }
+      .switch-button-container {
+        padding: 15px 15px 45px;
+      }
+    }
+  }
+}
+
+.flag-icon {
+  width: 1.2em;
+  margin-right: 5px;
+}
+
