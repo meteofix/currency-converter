@@ -1,3 +1,3 @@
-<app-header (updateRates)="fetchLatestRate('UAH')"></app-header>
+<app-header (updateRates)="fetchLatestRate('UAH'); fetchPairRate('USD', 'EUR')"></app-header>
 <app-error-card *ngIf="error" [error]="error"></app-error-card>
 <app-main></app-main>
