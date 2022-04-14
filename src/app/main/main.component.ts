@@ -4,6 +4,14 @@ import { FormControl } from '@angular/forms';
 
 import { RatesService } from '../services/rates.service';
 import { Currency, Rates } from '../interfaces/interfaces';
+import {
+  CURRENCIES,
+  INITIAL_FIRST_COUNTER,
+  INITIAL_FIRST_CURRENCY_INDEX,
+  INITIAL_RATES,
+  INITIAL_SECOND_COUNTER,
+  INITIAL_SECOND_CURRENCY_INDEX,
+} from '../services/consts';
 
 @Component({
   selector: 'app-main',
@@ -13,33 +21,19 @@ import { Currency, Rates } from '../interfaces/interfaces';
 export class MainComponent implements OnInit {
   constructor(private readonly ratesService: RatesService) {}
 
-  rates: Rates = {};
+  rates: Rates = INITIAL_RATES;
 
-  currencies: Currency[] = [
-    {
-      value: 'UAH',
-      viewValue: 'Ukrainian Hryvnia ',
-      logo: 'assets/images/flags/UAH.svg',
-    },
-    {
-      value: 'USD',
-      viewValue: 'US Dollar',
-      logo: 'assets/images/flags/USD.svg',
-    },
-    {
-      value: 'EUR',
-      viewValue: 'Euro',
-      logo: 'assets/images/flags/EUR.svg',
-    },
-  ];
+  currencies: Currency[] = CURRENCIES;
 
-  firstCounter = 1;
+  firstCounter = INITIAL_FIRST_COUNTER;
 
-  secondCounter = 0;
+  secondCounter = INITIAL_SECOND_COUNTER;
 
-  firstSelectedCurrency: Currency = this.currencies[1];
+  firstSelectedCurrency: Currency =
+    this.currencies[INITIAL_FIRST_CURRENCY_INDEX];
 
-  secondSelectedCurrency: Currency = this.currencies[0];
+  secondSelectedCurrency: Currency =
+    this.currencies[INITIAL_SECOND_CURRENCY_INDEX];
 
   firstCurrencyControl = new FormControl(this.firstSelectedCurrency.value);
 

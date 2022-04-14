@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { API_KEY, API_URL } from './consts';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,12 +14,12 @@ export class FetchService {
   }
 
   fetchLatestRate(base: string) {
-    const url = `https://v6.exchange_rate-api.com/v6/439b4a49537a2da811533fa5/latest/${base}`;
+    const url = `${API_URL}/${API_KEY}/latest/${base}`;
     return this.fetch(url);
   }
 
   fetchPairRate(base: string, target: string) {
-    const url = `https://v6.exchange_rate-api.com/v6/439b4a49537a2da811533fa5/pair/${base}/${target}`;
+    const url = `${API_URL}/${API_KEY}/pair/${base}/${target}`;
     return this.fetch(url);
   }
 }

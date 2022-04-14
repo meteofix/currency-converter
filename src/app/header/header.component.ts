@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { RatesService } from '../services/rates.service';
 import { Rates } from '../interfaces/interfaces';
+import { INITIAL_RATES } from '../services/consts';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() updateRates = new EventEmitter();
 
-  rates: Rates = {};
+  rates: Rates = INITIAL_RATES;
 
   ngOnInit(): void {
     this.ratesService.rates$.subscribe((rates) => {

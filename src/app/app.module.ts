@@ -14,9 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
+import { ErrorCardComponent } from './error-card/error-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, MainComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    MainComponent,
+    ErrorCardComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

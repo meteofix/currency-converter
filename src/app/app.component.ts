@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { RatesService } from './services/rates.service';
 import { FetchService } from './services/fetch.service';
 import { Rates } from './interfaces/interfaces';
+import { INITIAL_RATES } from './services/consts';
 
 @Component({
   selector: 'app-root',
@@ -18,42 +19,43 @@ export class AppComponent implements OnInit {
     private fetchService: FetchService
   ) {}
 
-  rates: Rates = {
-    UAH: {
-      UAH: 1,
-      USD: 0,
-      EUR: 0,
-    },
-    USD: {
-      USD: 1,
-      UAH: 0,
-      EUR: 0,
-    },
-    EUR: {
-      EUR: 1,
-      UAH: 0,
-      USD: 0,
-    },
-  };
+  rates: Rates = INITIAL_RATES;
+
+  error: any;
 
   ngOnInit(): void {
-    this.ratesService.rates$.subscribe((data) => console.log(data));
+    this.ratesService.rates$.subscribe({
+      error: (err) => {
+        console.error('ratesService() returned an error-card:', err);
+      },
+    });
     this.fetchLatestRate('UAH');
     this.fetchPairRate('USD', 'EUR');
   }
 
   fetchLatestRate(base: string) {
-    this.fetchService.fetchLatestRate(base).subscribe((response: any) => {
-      this.setUAHRates(response);
-      this.changeRates(this.rates);
-      console.log('fetched');
+    this.fetchService.fetchLatestRate(base).subscribe({
+      next: (response: any) => {
+        this.setUAHRates(response);
+        this.changeRates(this.rates);
+      },
+      error: (err) => {
+        this.error = err;
+        console.error('fetchLatestRate() returned an error-card:', err);
+      },
     });
   }
 
   fetchPairRate(base: string, target: string) {
-    this.fetchService.fetchPairRate(base, target).subscribe((response: any) => {
-      this.setPairRates(response);
-      this.changeRates(this.rates);
+    this.fetchService.fetchPairRate(base, target).subscribe({
+      next: (response: any) => {
+        this.setPairRates(response);
+        this.changeRates(this.rates);
+      },
+      error: (err) => {
+        this.error = err;
+        console.error('fetchPairRate() returned an error-card:', err);
+      },
     });
   }
 
